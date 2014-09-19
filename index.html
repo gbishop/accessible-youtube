@@ -9,250 +9,14 @@
 	<script type="text/javascript" src='search.js'></script>
 	<script type='text/javascript' src='plugin.js'></script>
 	<script src='https://www.youtube.com/iframe_api'></script>
-
-	<style>
-		body {
-			background-color:beige;
-			font-family:monospace;
-			text-align:center;
-			width:65em;
-			margin: auto;
-		}
-
-		h1 {
-			font-size:1.25em;
-			display:inline-block;
-		}
-
-		h2 {
-			font-size:1em;
-		}
-
-		.video {
-			margin:0 0.3em 0 0.3em;
-			display:inline-block;
-			width:10em;
-			height:20em;
-		}
-
-		.video h2 {
-			line-height:1.1em;
-			max-height:3.3em;
-			overflow:hidden;
-			margin-bottom:0;
-		}
-
-		.videoPic {
-			height:10em;
-			width:10em;
-			border: solid beige 0.25em;
-			z-index:10;
-		}
-		.controlDiv {
-			margin:0.5em 0.5em 0 0.5em;
-			height:3em;
-			width:4.5em;
-			float:left;
-		}
-
-		.controlButton {
-			height:3em;
-			width:4.5em;
-			border-radius:0.63em;
-			background-color: #99BADD;
-			color:white;
-			box-shadow:0.125em 0.125em 0.125em black;
-			display:inline-block;
-			text-decoration:none;
-			border:solid #99BADD 0.25em;
-		}
-
-		.controlButton:active {
-			background-color: #4a6aa3;
-			box-shadow:none;
-			margin-left:0.13em;
-		}
-
-		.controlPic {
-			border-radius:100%;
-			margin:0.5em 0 0 0;
-			width:2em;
-			height:2em;
-			display:inline-block;
-		}
-
-		.navPic {
-			display:block;
-			border-radius:100%;
-			border: solid beige 0.25em;
-			margin-top:1.7em;
-			margin-right:0.5em;
-			margin-left:0.5em;
-			width:4em;
-			height:4em;
-		}
-
-		.controlSelected {
-			border:solid red 0.25em;
-		}
-
-		#controls {
-			display:none;
-			width:65em;
-			height:3em;
-			margin-right:2em;
-			margin-top:-2.05em;
-		}
-
-		#header {
-			color: #99BADD;
-			background-color:black;
-			box-shadow:0.125em 0.125em 0.125em #99BADD;
-			font-size:1.88em;
-			display:inline-block;
-			padding:0.31em 0.63em 0.31em 0.63em;
-			margin-bottom:0;
-		}
-
-		#huge {
-			float:left;
-			display:inline-block;
-			margin-top:-2.18em;
-			width:44.41em;
-			height:25em;
-			margin-left:10.3em;
-		}
-
-		#nextPage {
-			display:inline-block;
-			height:8.44em;
-		}
-
-		#lastPage {
-			display:inline-block;
-			height:8.44em;
-		}
-
-		#preview {
-			font-size:3em;
-			position:absolute;
-			border:solid 0.0625em black;
-			box-shadow:0.125em 0.125em 0.125em black;
-			width:21em;
-			height:12em;
-			/*background-color:beige;*/
-			background: rgba(245, 245, 220, 0.95);
-			display:none;
-			margin-left:0.1666em;
-			margin-top:-3em;
-			z-index:2;
-
-		}
-
-		#preview h2 {
-			line-height:1.1em;
-			max-height:2.2em;
-			overflow:hidden;
-			line-height:1.1em;
-		}
-
-		#preview img {
-			height:8.5em;
-			width:12em;
-			margin-top:-0.7em;
-			opacity:1.0;
-		}
-
-		#query {
-			display:inline-block;
-			margin-top:0.2em;
-			margin-bottom:0.1em;
-			outline:0;
-			font-size:3em;
-			width:7em;
-			border-radius:1em;
-			border:solid 0.0625em gray;
-			padding:0.2em 0.3em 0.2em 0.3em;;
-			text-align:right;
-		}
-
-		#searchButton {
-			font-size:2.4em;
-			padding:0.2em 0.3em 0.2em 0.3em;
-			border-radius:1em;
-			border:solid 0.0625em gray;
-			outline:0;
-			background-color: #99BADD;
-		}
-
-		#searchButton:hover {
-			outline:0;
-			background-color: #57b9ed;
-		}
-
-		#searchButton:active {
-			outline:0;
-			background-color: #99BADD;
-		}
-
-		#tooltip {
-			float:left;
-			background-color:beige;
-			box-shadow:0.125em 0.125em 0.125em black;
-			border: solid 0.125em black;
-			font-weight:bold;
-			color:black;
-			font-size:1em;
-			height:2.5em;
-			width:19em;
-			border-radius:0.4725em;
-			padding:0 0 1em 0;
-			margin-top:0.325em;
-			margin-left:11.5em;
-			margin-right:1em;
-		}
-
-		#tooltip p {
-			display:block;
-			font-size:1.5em;
-			margin-top:0.7em;
-		}
-
-		#videoCenter {
-			width:65em;
-		}
-
-		#videos {
-			margin-top:1.25em;
-		}
-
-		#well {
-			float:left;
-			margin-right:-4em;
-			margin-top:0.5em;
-			width:4em;
-			height:4em;
-		}
-
-		#well:hover {
-			opacity:0.5;
-		}
-
-		.selected {
-			border: solid red 0.25em;
-			opacity:0.5;
-		}
-
-		.selected:active {
-			border:solid #56A0D3 0.25em;
-		}
-
-	</style>
-
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body onresize='changeFontSize()' onload='changeFontSize();load();'>
 
 <a href='index.html'><img title='Accessible YouTube Home' id='well' src='pics/well.png' /></a>
+<a href='help.html'><img title='Help' id='help' src='pics/help.png' /></a>
+<a><img title='Settings' id='settings' src='pics/settings.png' /></a>
+
 <h1 id='header'>Accessible YouTube</h1>
 <div>
 	<label>
@@ -262,6 +26,17 @@
 </div>
 
 <div id='preview'></div>
+<div id="settingsContainer">
+	<img id="close" src="pics/close.png" onclick="$('#settingsContainer').slideUp()">
+	<h1 id="settingsHeader">Settings</h1><br>
+	<p>Text to Speech</p><input id="textToSpeechSetting" type="checkbox"><br>
+	<p class="underlined bold">Enabled Buttons</p><br>
+	<p>Play/Pause</p><input id="playPauseSetting" type="checkbox" checked><br>
+	<p>Rewind 10 Seconds</p><input id="rewindSetting" type="checkbox" checked><br>
+	<p>Watch Related Videos</p><input id="relatedSetting" type="checkbox" checked><br>
+	<p>Watch Next Video</p><input id="nextSetting" type="checkbox" checked><br>
+	<p>Back to Videos</p><input id="backSetting" type="checkbox" checked>
+</div>
 
 <div id="search-container"></div>
 
@@ -280,25 +55,22 @@
 	<div id='tooltip'></div>
 
 	<div class='controlDiv' id='control0'>
-		<a onclick='confirm();' class='controlButton' id='controlButton0'>
+		<a onclick='confirm();' class='controlButton' id="controlButton0">
 			<img id='playPause' class='controlPic' src='pics/pause.png' />
 		</a>
 	</div>
 	<div class='controlDiv' id='control1'>
-		<a onclick='confirm();' class='controlButton'
-		   id='controlButton1'>
+		<a onclick='confirm();' class='controlButton' id='controlButton1'>
 			<img id='rewind' class='controlPic' src='pics/rewind.png' />
 		</a>
 	</div>
 	<div class='controlDiv' id='control2'>
-		<a onclick='confirm();' class='controlButton'
-		   id='controlButton2'>
+		<a onclick='confirm();' class='controlButton' id='controlButton2'>
 			<img id='related' class='controlPic' src='pics/related.png' />
 		</a>
 	</div>
 	<div class='controlDiv' id='control3'>
-		<a onclick='confirm();' class='controlButton'
-		   id='controlButton3'>
+		<a onclick='confirm();' class='controlButton' id='controlButton3'>
 			<img id='back' class='controlPic' src='pics/back.png' />
 		</a>
 	</div>

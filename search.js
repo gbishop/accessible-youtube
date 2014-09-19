@@ -89,11 +89,11 @@ function change(video) {
 	 * search related videos.
 	 */
 	if (isSearchingPlaylist) document.getElementById('control2').innerHTML =
-		"<a title='Watch Next Video' onclick='nextVideo();'" +
+		"<a onclick='nextVideo();'" +
 			" class='controlButton' id='controlButton2'> <img id='next' class='controlPic' " +
 			"src='pics/next.png' /></a>";
 	else document.getElementById('control2').innerHTML =
-		"<a title='Watch Related Videos' onclick='searchRelatedVideos();' " +
+		"<a onclick='searchRelatedVideos();' " +
 			"class='controlButton' id='controlButton2'> <img id='related' class='controlPic' " +
 			"src='pics/related.png' /></a>";
 

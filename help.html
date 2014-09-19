@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "utf-8" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Accessible YouTube</title>
+	<script type='text/javascript' src="jQuery.js" ></script>
+	<script type="text/javascript" src='search.js'></script>
+	<script type='text/javascript' src='plugin.js'></script>
+	<script src='https://www.youtube.com/iframe_api'></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onresize='changeFontSize()' onload='changeFontSize();load();'>
+
+<a href='index.html'><img title='Accessible YouTube Home' id='well' src='pics/well.png' /></a>
+<a href='help.html'><img title='Help' id='help' src='pics/help.png' /></a>
+<h1 id='header'>Accessible YouTube</h1>
+<div id="instructions">
+	<h1>**WARNING**</h1>
+	<p>YouTube searches are unfiltered and may contain unsuitable content.</p>
+	<h2>Switch-Access Navigation:</h2>
+	<p>Left Arrow or Enter/Return -> Confirm choice</p>
+	<p>Right Arrow or Spacebar -> Go to next choice</p>
+	<p>Up Arrow -> Go to last choice</p>
+	<h2>Searching For Videos</h2>
+	<p>To start watching videos, someone with the ability to type will have to perform
+	the initial search. Type your query in the search bar on the home page and hit
+	"Search" (or press Enter/Return). Now, the Switch-Enabled user has full control
+	over navigating through YouTube.</p>
+	<h2>Searching For Playlists</h2>
+	<p>To search for a YouTube playlist, you must get the URL of the playlist by copying
+	the URL from YouTube.com, or you must copy the playlist ID. Once you have either of
+	these, paste the URL or ID into the search bar. Now, the user will be able to watch
+	custom playlists and navigate them using Switch-Accessible controls. For more
+	information on how to create a YouTube playlist, seek help on YouTube.com</p>
+	<h2>Bookmarking/Sharing Videos/Playlists</h2>
+	<p>Any page, video, or playlist may be bookmarked for later use. To do this, simply
+	save the current location as a bookmark. To share a page, video, or playlist, copy
+	and paste the current URL (in the address bar) and send it to whomever you wish to
+	share the page, video, or playlist.</p>
+</div>
+
+<div id="settingsContainer">Testing</div>
+
+</body>
+</html>

@@ -23,6 +23,8 @@ var previewTimeout;
 var isUserSearching = true;
 var isBrowserNavigation = true;
 
+var textToSpeechEnabled = false;
+
 var myLocation = locations.SEARCH;
 
 window.onhashchange = function() {
@@ -31,7 +33,7 @@ window.onhashchange = function() {
 	} else {
 		isBrowserNavigation = true;
 	}
-}
+};
 
 function buildHash() {
 	var q = encodeURIComponent($('#query').val());
@@ -41,6 +43,41 @@ function buildHash() {
 		']&hasMoreVideos=' + hasMoreVideos + '&isSearchingRelatedVideos=' + isSearchingRelatedVideos +
 		'&relatedVideoIDs=[' + relatedVideoIDs + ']&isSearchingPlaylist=' + isSearchingPlaylist + '&playlistID=' +
 		playlistID + '&videoID=' + videoID;
+}
+
+function activateSettings() {
+	$('#settings').click(function() {
+		$('#settingsContainer').slideToggle();
+	});
+
+	$('#settingsContainer input').click(function() {
+		// Handle text to speech toggle
+		if (this.id == 'textToSpeechSetting') {
+			textToSpeechEnabled = ! textToSpeechEnabled;
+			return;
+		}
+
+		// Handle video button
+		var shouldShow = $(this).is(':checked');
+		var buttonID = this.id.split('Setting')[0];
+		var button = $('#' + buttonID).parent();
+
+		if (shouldShow) button.show();
+		else button.hide();
+
+		keyIndex = getFirstVisibleControlIndex();
+
+		if (keyIndex == -1) $('#tooltip').hide();
+		else $('#tooltip').show();
+
+		stylize();
+	});
+}
+
+function getFirstVisibleControlIndex() {
+	var controls = $('#controls').find('.controlDiv a');
+	if (controls.filter(':visible').length == 0) return -1;
+	else return controls.index(controls.filter(':visible')[0]);
 }
 
 function load() {
@@ -55,7 +92,7 @@ function load() {
 		hash = url.match(/index\.html.*/g)[0].substring(10);
 	} catch (error) {
 		// Exception, if "index.html" is not appended
-		hash = url.match(/#.*/g)[0].substring(0);
+		if (! window.location.hash) hash = url.match(/#.*/g)[0].substring(0);
 	}
 
 	// Determine if the page loaded is a new page
@@ -63,11 +100,7 @@ function load() {
 		isNewPage = true;
 	} else if (hash == '#') { // URL = ./index.html#
 		isNewPage = true;
-	} else if (hash == '') { // URL = ./index.html
-		isNewPage = true;
-	} else { // URL = ./index.html#q=...
-		isNewPage = false;
-	}
+	} else isNewPage = hash == '';
 
 	// Evaluate parameters
 	var parameters = hash.split(/[\&\?]+/);
@@ -103,10 +136,14 @@ function load() {
 	if (isWatchingVideo) {
 		$('#query').val(decodeURIComponent(q));
 		change(videoID);
+
+		$('#query').blur();
 	} else if(isNewPage) {
 		// Decide what to do if a new page is loaded, if applicable
 	} else {
 		$('#query').val(decodeURIComponent(q));
+
+		$('#query').blur();
 
 		if (isSearchingPlaylist) {
 			searchCurrPagePlaylist(true);
@@ -125,6 +162,7 @@ $(document).ready(function() {
 	$('#tooltip').hide();
 
 	changeFontSize();
+	activateSettings();
 
 	// on page load, focus is set to video search box
 	$('#query').focus();
@@ -194,7 +232,6 @@ function confirm() {
 }
 
 function decrement() {
-
 	if (keyIndex == -1) {
 		if (pageIndices[relatedVideoIDs.length] > 1) keyIndex = 0;
 		else if (isSearchingRelatedVideos) keyIndex = 0;
@@ -219,6 +256,17 @@ function decrement() {
 			}
 		}
 	} else if (myLocation == locations.VIDEO) {
+		// If no buttons are visible, do nothing
+		if ($('#controls').find('.controlDiv a:visible').length == 0) return;
+
+		// Account for buttons that are hidden
+		while (isCurrentButtonHidden()) {
+			keyIndex--;
+			if (keyIndex < 0) {
+				keyIndex = 3;
+			}
+		}
+
 		if (keyIndex < 0) {
 			keyIndex = 3;
 		}
@@ -270,7 +318,6 @@ function hidePreview() {
 }
 
 function increment() {
-
 	if (keyIndex == -1) keyIndex = 1;
 	else keyIndex++;
 
@@ -289,6 +336,17 @@ function increment() {
 			}
 		}
 	} else if (myLocation == locations.VIDEO) {
+		// If no buttons are visible, do nothing
+		if ($('#controls').find('.controlDiv a:visible').length == 0) return;
+
+		// Account for buttons that are hidden
+		while (isCurrentButtonHidden()) {
+			keyIndex++;
+			if (keyIndex > 3) {
+				keyIndex = 0;
+			}
+		}
+
 		if (keyIndex > 3) {
 			keyIndex = 0;
 		}
@@ -310,6 +368,8 @@ function showPreview() {
 					'</h2>' + '<img src="https://img.youtube.com/vi/' + videoIDs[keyIndex - 1] +
 					'/0.jpg" />'
 			}
+
+			speakText(title);
 
 			clearTimeout(previewTimeout);
 
@@ -334,6 +394,7 @@ function stylize() {
 		else if (keyIndex == 0) {
 			hidePreview();
 			current = $('#lastPagePic');
+			speakText('Last Page');
 		}
 		else if (keyIndex <= videoIDs.length) {
 			current = $('#videoPic' + (keyIndex - 1));
@@ -342,6 +403,7 @@ function stylize() {
 		else {
 			hidePreview();
 			current = $('#nextPagePic');
+			speakText('Next Page');
 		}
 
 		last = current;
@@ -358,23 +420,7 @@ function stylize() {
 
 		last = current;
 
-		// display tooltip
-		if (keyIndex == 0) {
-			var state = player.getPlayerState();
-			if (state == PAUSED) $('#tooltip').html('<p>Play</p>');
-			else if (state == DONE) $('#tooltip').html('<p>Play</p>');
-			else if (state == PLAYING) $('#tooltip').html('<p>Pause</p>');
-			else $('#tooltip').html('');
-		}
-		else if (keyIndex == 1) {
-			if (isVideoDone()) $('#tooltip').html('<p>Watch Video Again</p>');
-			else $('#tooltip').html('<p>Rewind Ten Seconds</p>');
-		}
-		else if (keyIndex == 2) {
-			if (isSearchingPlaylist) $('#tooltip').html('<p>Watch Next Video</p>');
-			else $('#tooltip').html('<p>Watch Related Videos</p>');
-		}
-		else if (keyIndex == 3) $('#tooltip').html('<p>Back to Videos</p>');
+		displayTooltip();
 
 		current.addClass('controlSelected');
 	}
@@ -414,25 +460,42 @@ function stylizeMouseHover() {
 
 		last = current;
 
-		// display tooltip
-		if (keyIndex == 0) {
-			var state = player.getPlayerState();
-			if (state == PAUSED) $('#tooltip').html('<p>Play</p>');
-			else if (state == DONE) $('#tooltip').html('<p>Play</p>');
-			else if (state == PLAYING) $('#tooltip').html('<p>Pause</p>');
-			else $('#tooltip').html('');
-		}
-		else if (keyIndex == 1) {
-			if (isVideoDone()) $('#tooltip').html('<p>Watch Video Again</p>');
-			else $('#tooltip').html('<p>Rewind Ten Seconds</p>');
-		}
-		else if (keyIndex == 2) {
-			if (isSearchingPlaylist) $('#tooltip').html('<p>Watch Next Video</p>');
-			else $('#tooltip').html('<p>Watch Related Videos</p>');
-		}
-		else if (keyIndex == 3) $('#tooltip').html('<p>Back to Videos</p>');
+		displayTooltip();
 
 		current.addClass('controlSelected');
-
 	}
+}
+
+function displayTooltip() {
+	var text = '';
+	// display tooltip
+	if (keyIndex == 0) {
+		var state = player.getPlayerState();
+		if (state == PAUSED) text = 'Play';
+		else if (state == DONE) text = 'Play';
+		else if (state == PLAYING) text = 'Pause';
+	}
+	else if (keyIndex == 1) {
+		if (isVideoDone()) text = 'Watch Video Again';
+		else text = 'Rewind Ten Seconds';
+	}
+	else if (keyIndex == 2) {
+		if (isSearchingPlaylist) text = 'Watch Next Video';
+		else text = 'Watch Related Videos';
+	}
+	else if (keyIndex == 3) text = 'Back to Videos';
+
+	$('#tooltip').html('<p>' + text + '</p>');
+	speakText(text);
+}
+
+function isCurrentButtonHidden() {
+	return ! $($('#controls').find('.controlDiv a')[keyIndex]).is(':visible')
+}
+
+function speakText(text) {
+	if (! textToSpeechEnabled) return;
+
+	var msg = new SpeechSynthesisUtterance(text);
+	window.speechSynthesis.speak(msg);
 }
