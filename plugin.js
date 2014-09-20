@@ -498,7 +498,7 @@ function isCurrentButtonHidden() {
 function speakText(text) {
 	if (! textToSpeechEnabled || tempMute) return;
 
-	stopSpekaking();
+	stopSpeaking();
 
 	setTimeout(function() {
 		var msg = new SpeechSynthesisUtterance(text);
