@@ -24,6 +24,7 @@ var isUserSearching = true;
 var isBrowserNavigation = true;
 
 var textToSpeechEnabled = false;
+var tempMute = false;
 
 var myLocation = locations.SEARCH;
 
@@ -181,7 +182,6 @@ $(document).ready(function() {
 
 	// a key is pressed
 	$('body').keydown(function(event) {
-
 		var key = event.keyCode;
 
 		if (isUserSearching) {
@@ -198,11 +198,15 @@ $(document).ready(function() {
 		if (! iDeviceMode) stylize();
 		else destylize();
 
+		// Undo temporary muting of text to speech in confirm() function
+		tempMute = false;
 	});
 
 });
 
 function confirm() {
+	tempMute = true;
+
 	if (myLocation == locations.DISPLAY) {
 		if (keyIndex == -1) {}
 		else if (keyIndex == 0) {
@@ -226,7 +230,7 @@ function confirm() {
 				else searchRelatedVideos();
 			} break;
 			case 3: backToVideos(); break;
-			default: {};
+			default: {}
 		}
 	}
 }
@@ -395,12 +399,10 @@ function stylize() {
 			hidePreview();
 			current = $('#lastPagePic');
 			speakText('Last Page');
-		}
-		else if (keyIndex <= videoIDs.length) {
+		} else if (keyIndex <= videoIDs.length) {
 			current = $('#videoPic' + (keyIndex - 1));
 			showPreview();
-		}
-		else {
+		} else {
 			hidePreview();
 			current = $('#nextPagePic');
 			speakText('Next Page');
@@ -494,8 +496,16 @@ function isCurrentButtonHidden() {
 }
 
 function speakText(text) {
-	if (! textToSpeechEnabled) return;
+	if (! textToSpeechEnabled || tempMute) return;
 
-	var msg = new SpeechSynthesisUtterance(text);
-	window.speechSynthesis.speak(msg);
+	stopSpekaking();
+
+	setTimeout(function() {
+		var msg = new SpeechSynthesisUtterance(text);
+		window.speechSynthesis.speak(msg);
+	}, 100);
+}
+
+function stopSpeaking() {
+	window.speechSynthesis.cancel();
 }

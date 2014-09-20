@@ -392,9 +392,14 @@ function onPlayerReady() {
 	});
 	$('#huge').show();
 
+	keyIndex = getFirstVisibleControlIndex();
+
+	if (keyIndex == -1) $('#tooltip').hide();
+	else $('#tooltip').show();
+
 	setJQuery();
 
-	// If the user is not on an iDevice, stylze the page
+	// If the user is not on an iDevice, stylize the page
 	if (! iDeviceMode) stylize();
 }
 
