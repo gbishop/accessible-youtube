@@ -1,8 +1,9 @@
 
 var locations = {
 	DISPLAY: 'display',
-	VIDEO: 'video'
-}
+	VIDEO: 'video',
+	SEARCH: 'search'
+};
 
 var keys = {
 	ENTER:13,
@@ -11,9 +12,11 @@ var keys = {
 	UP: 38,
 	RIGHT: 39,
 	DOWN: 40
-}
+};
 
 var keyIndex = 1;
+
+var buttonSettings = {'playPause': true, 'rewind': true, 'related': true, 'next': true};
 
 var last;
 var current;
@@ -56,7 +59,7 @@ function activateSettings() {
 		$('#textToSpeechSetting').hide();
 	}
 
-	$('#settingsContainer input').click(function() {
+	$('#settingsContainer').find('input').click(function() {
 		// Handle text to speech toggle
 		if (this.id == 'textToSpeechSetting') {
 			textToSpeechEnabled = ! textToSpeechEnabled;
@@ -66,18 +69,33 @@ function activateSettings() {
 		// Handle video button
 		var shouldShow = $(this).is(':checked');
 		var buttonID = this.id.split('Setting')[0];
+
+		buttonSettings[buttonID] = shouldShow;
+
+		showButtonsFromSettings();
+	});
+}
+
+function showButtonsFromSettings() {
+	var keys = Object.keys(buttonSettings);
+
+	for (var i = 0; i < keys.length; i++) {
+		var buttonID = keys[i];
+		var shouldShow = buttonSettings[buttonID];
 		var button = $('#' + buttonID).parent();
+
+		console.log(buttonID + ": " + shouldShow);
 
 		if (shouldShow) button.show();
 		else button.hide();
+	}
 
-		keyIndex = getFirstVisibleControlIndex();
+	keyIndex = getFirstVisibleControlIndex();
 
-		if (keyIndex == -1) $('#tooltip').hide();
-		else $('#tooltip').show();
+	if (keyIndex == -1) $('#tooltip').hide();
+	else $('#tooltip').show();
 
-		stylize();
-	});
+	stylize();
 }
 
 function getFirstVisibleControlIndex() {

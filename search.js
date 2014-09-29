@@ -97,6 +97,8 @@ function change(video) {
 			"class='controlButton' id='controlButton2'> <img id='related' class='controlPic' " +
 			"src='pics/related.png' /></a>";
 
+	showButtonsFromSettings();
+
 	hidePreview();
 
 	$('#videos').hide();
@@ -349,7 +351,7 @@ function display() {
 
 function isVideoDone() {
 	// Player must be valid; otherwise, return false
-	if (player) return (player.getPlayerState() == DONE);
+	if (player && player.getPlayerState) return (player.getPlayerState() == DONE);
 	else return false;
 }
 
