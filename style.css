@@ -85,8 +85,8 @@ h2 {
 
 #close {
 	float:right;
-	height:2em;
-	width:2em;
+	height:1.5em;
+	width:1.5em;
 	margin:0.5em 0.5em auto auto;
 }
 
@@ -226,7 +226,7 @@ h2 {
 
 #settingsHeader {
 	margin-bottom:0.3em;
-	margin-left:1.5em;
+	margin-left:1.6em;
 }
 
 #tooltip {

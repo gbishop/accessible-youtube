@@ -51,6 +51,11 @@ function activateSettings() {
 		$('#settingsContainer').slideToggle();
 	});
 
+	// Hide text to speech if it is not supported
+	if (! 'speechSynthesis' in window) {
+		$('#textToSpeechSetting').hide();
+	}
+
 	$('#settingsContainer input').click(function() {
 		// Handle text to speech toggle
 		if (this.id == 'textToSpeechSetting') {
