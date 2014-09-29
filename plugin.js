@@ -55,8 +55,8 @@ function activateSettings() {
 	});
 
 	// Hide text to speech if it is not supported
-	if (! 'speechSynthesis' in window) {
-		$('#textToSpeechSetting').hide();
+	if (! isSpeechSynthesisSupported()) {
+		$('#textToSpeech').hide();
 	}
 
 	$('#settingsContainer').find('input').click(function() {
@@ -74,6 +74,10 @@ function activateSettings() {
 
 		showButtonsFromSettings();
 	});
+}
+
+function isSpeechSynthesisSupported() {
+	return 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
 }
 
 function showButtonsFromSettings() {
