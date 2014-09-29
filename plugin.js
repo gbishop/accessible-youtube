@@ -494,7 +494,7 @@ function stylizeMouseHover() {
 function displayTooltip() {
 	var text = '';
 	// display tooltip
-	if (keyIndex == 0) {
+	if (keyIndex == 0 && player.getPlayerState) {
 		var state = player.getPlayerState();
 		if (state == PAUSED) text = 'Play';
 		else if (state == DONE) text = 'Play';
