@@ -88,7 +88,7 @@ function showButtonsFromSettings() {
 		var shouldShow = buttonSettings[buttonID];
 		var button = $('#' + buttonID).parent();
 
-		console.log(buttonID + ": " + shouldShow);
+		// console.log(buttonID + ": " + shouldShow);
 
 		if (shouldShow) button.show();
 		else button.hide();
