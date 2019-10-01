@@ -80,7 +80,7 @@ function change(video) {
 	// Create player object
 	document.getElementById("huge").innerHTML='<iframe id="player" style="width:44.41em; ' +
 		'height:25em;" src="https://www.youtube.com/embed/' +
-		video + '?autoplay=1&rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>';
+		video + '?autoplay=1&rel=0&enablejsapi=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>';
 	document.getElementById('playPause').src='pics/pause.png';
 
 	/* Create the third control button on the left for the video player. If
