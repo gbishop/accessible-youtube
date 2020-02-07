@@ -35,6 +35,8 @@ var tempMute = false;
 
 var myLocation = locations.SEARCH;
 
+var scanInterval = 0;
+
 window.onhashchange = function() {
   if (isBrowserNavigation) {
     load();
@@ -85,7 +87,7 @@ function activateSettings() {
   }
 
   $("#settingsContainer")
-    .find("input")
+    .find('input[type="checkbox"]')
     .click(function() {
       // Handle text to speech toggle
       if (this.id == "textToSpeechSetting") {
@@ -101,6 +103,9 @@ function activateSettings() {
 
       showButtonsFromSettings();
     });
+  $("#scanInterval").change(function() {
+    scanInterval = parseInt(this.value);
+  });
 }
 
 function isSpeechSynthesisSupported() {
@@ -234,6 +239,19 @@ $(document).ready(function() {
   $("#query").focusout(function() {
     isUserSearching = false;
   });
+
+  // hack for 1 switch test
+  var scanTime = 0;
+  setInterval(function() {
+    if (scanInterval > 0) {
+      scanTime = (scanTime + 1) % scanInterval;
+      if (scanTime == 0) {
+        increment();
+        if (!iDeviceMode) stylize();
+        else destylize();
+      }
+    }
+  }, 1000);
 
   // a key is pressed
   $("body").keydown(function(event) {
