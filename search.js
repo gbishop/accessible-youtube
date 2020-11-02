@@ -161,7 +161,7 @@ function checkForVideos() {
 		if (nextPageTokens[relatedVideoIDs.length]) {
 			return $.ajax('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' +
 				'&pageToken=' + nextPageTokens[relatedVideoIDs.length] + '&playlistId=' +
-				playlistID + '&videoEmbeddable=true' + '&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+				playlistID + '&videoEmbeddable=true' + '&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 				{type: 'GET',
 					cache: false,
 					success: function (data, status, jqxhr) {
@@ -184,7 +184,7 @@ function checkForVideos() {
 			return $.ajax('https://www.googleapis.com/youtube/v3/search?part=snippet&pageToken=' +
 				nextPageTokens[relatedVideoIDs.length] + '&relatedToVideoId=' +
 				relatedVideoIDs[relatedVideoIDs.length-1] + '&videoEmbeddable=true' +
-				'&type=video&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+				'&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 				{type: 'GET',
 					cache: false,
 					success: function (data, status, jqxhr) {
@@ -205,7 +205,7 @@ function checkForVideos() {
 	else if (nextPageTokens[relatedVideoIDs.length]) {
 		return $.ajax('https://www.googleapis.com/youtube/v3/search?part=snippet&pageToken=' +
 			nextPageTokens[relatedVideoIDs.length] + '&q=' + q + '&videoEmbeddable=true' +
-			'&type=video&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+			'&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 			{type: 'GET',
 				cache: false,
 				success: function (data, status, jqxhr) {
@@ -467,7 +467,7 @@ function search() {
 
 		// Execute search
 		return $.ajax('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + q +
-			'&type=video&videoEmbeddable=true&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+			'&type=video&videoEmbeddable=true&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 			{type: 'GET',
 				cache: false,
 				success: function (data, status, jqxhr) {
@@ -494,7 +494,7 @@ function searchRelatedVideos() {
 	// Execute search
 	return $.ajax('https://www.googleapis.com/youtube/v3/search?part=snippet&type=video'+
 		'&relatedToVideoId=' + relatedVideoIDs[relatedVideoIDs.length-1] +
-		'&videoEmbeddable=true&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+		'&videoEmbeddable=true&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 		{type: 'GET',
 			cache: false,
 			success: function (data, status, jqxhr) {
@@ -515,7 +515,7 @@ function searchPlaylist() {
 
 	// Execute search
 	return $.ajax('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' +
-		'&playlistId=' + playlistID + '&videoEmbeddable=true&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+		'&playlistId=' + playlistID + '&videoEmbeddable=true&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 		{type: 'GET',
 			cache: false,
 			success: function (data, status, jqxhr) {
@@ -552,7 +552,7 @@ function searchCurrPage(isLoadEvent) {
 			return $.ajax('https://www.googleapis.com/youtube/v3/search?pageToken=' +
 				currPageTokens[relatedVideoIDs.length] + '&part=snippet&relatedToVideoId=' +
 				relatedVideoIDs[relatedVideoIDs.length-1] + '&videoEmbeddable=true' +
-				'&type=video&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+				'&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 				{type: 'GET',
 					cache: false,
 					success: function (data, status, jqxhr) {
@@ -566,7 +566,7 @@ function searchCurrPage(isLoadEvent) {
 		} else {
 			return $.ajax('https://www.googleapis.com/youtube/v3/search?part=snippet' +
 				'&relatedToVideoId=' + relatedVideoIDs[relatedVideoIDs.length-1] +
-				'&videoEmbeddable=true&type=video&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+				'&videoEmbeddable=true&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 				{type: 'GET',
 					cache: false,
 					success: function (data, status, jqxhr) {
@@ -587,7 +587,7 @@ function searchCurrPage(isLoadEvent) {
 
 			return $.ajax('https://www.googleapis.com/youtube/v3/search?pageToken=' +
 				currPageTokens[relatedVideoIDs.length] + '&part=snippet&q=' + q +
-				'&videoEmbeddable=true&type=video&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+				'&videoEmbeddable=true&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 				{type: 'GET',
 					cache: false,
 					success: function (data, status, jqxhr) {
@@ -602,7 +602,7 @@ function searchCurrPage(isLoadEvent) {
 		} else {
 
 			return $.ajax('https://www.googleapis.com/youtube/v3/search?part=snippet&q='
-				+ q + '&videoEmbeddable=true&type=video&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+				+ q + '&videoEmbeddable=true&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 				{type: 'GET',
 					cache: false,
 					success: function (data, status, jqxhr) {
@@ -632,7 +632,7 @@ function searchCurrPagePlaylist(isLoadEvent) {
 	if (currPageTokens[relatedVideoIDs.length]) {
 		return $.ajax('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&pageToken=' +
 			currPageTokens[relatedVideoIDs.length] + '&playlistId=' + playlistID + '&videoEmbeddable=true' +
-			'&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+			'&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 			{type: 'GET',
 				cache: false,
 				success: function (data, status, jqxhr) {
@@ -645,7 +645,7 @@ function searchCurrPagePlaylist(isLoadEvent) {
 		);
 	} else {
 		return $.ajax('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' + '&videoEmbeddable=true' +
-			'&playlistId=' + playlistID + '&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+			'&playlistId=' + playlistID + '&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 			{type: 'GET',
 				cache: false,
 				success: function (data, status, jqxhr) {
@@ -673,7 +673,7 @@ function searchNextPage(noDisplay) {
 		return $.ajax('https://www.googleapis.com/youtube/v3/search?pageToken=' +
 			nextPageTokens[relatedVideoIDs.length] + '&part=snippet&relatedToVideoId=' +
 			relatedVideoIDs[relatedVideoIDs.length-1] + '&videoEmbeddable=true' +
-			'&type=video&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+			'&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 			{type: 'GET',
 				cache: false,
 				success: function (data, status, jqxhr) {
@@ -693,7 +693,7 @@ function searchNextPage(noDisplay) {
 		// Execute search
 		return $.ajax('https://www.googleapis.com/youtube/v3/search?pageToken=' +
 			nextPageTokens[relatedVideoIDs.length] + '&part=snippet&q=' + q + '&videoEmbeddable=true' +
-			'&type=video&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+			'&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 			{type: 'GET',
 				cache: false,
 				success: function (data, status, jqxhr) {
@@ -717,7 +717,7 @@ function searchNextPagePlaylist(noDisplay) {
 	// Execute search
 	return $.ajax('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&pageToken=' +
 		nextPageTokens[relatedVideoIDs.length] + '&playlistId=' + playlistID + '&videoEmbeddable=true' +
-		'&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+		'&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 		{type: 'GET',
 			cache: false,
 			success: function (data, status, jqxhr) {
@@ -745,7 +745,7 @@ function searchPrevPage() {
 		return $.ajax('https://www.googleapis.com/youtube/v3/search?pageToken=' +
 			prevPageTokens[relatedVideoIDs.length] + '&part=snippet&relatedToVideoId=' +
 			relatedVideoIDs[relatedVideoIDs.length-1] + '&videoEmbeddable=true' +
-			'&type=video&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+			'&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 			{type: 'GET',
 				cache: false,
 				success: function (data, status, jqxhr) {
@@ -765,7 +765,7 @@ function searchPrevPage() {
 
 		return $.ajax('https://www.googleapis.com/youtube/v3/search?pageToken=' +
 			prevPageTokens[relatedVideoIDs.length] + '&part=snippet&q=' + q + '&videoEmbeddable=true' +
-			'&type=video&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+			'&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 			{type: 'GET',
 				cache: false,
 				success: function (data, status, jqxhr) {
@@ -790,7 +790,7 @@ function searchPrevPagePlaylist() {
 	// Execute search
 	return $.ajax('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&pageToken=' +
 		prevPageTokens[relatedVideoIDs.length] + '&playlistId=' + playlistID + '&videoEmbeddable=true' +
-		'&key=AIzaSyBY7FMm-5Bt_LcZygKzAbuu1G1eNjnKQ5I',
+		'&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc',
 		{type: 'GET',
 			cache: false,
 			success: function (data, status, jqxhr) {
