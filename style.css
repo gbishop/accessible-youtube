@@ -1,297 +1,302 @@
 body {
-	background-color:beige;
-	font-family:monospace;
-	text-align:center;
-	width:65em;
-	margin: auto;
+  background-color: beige;
+  font-family: monospace;
+  text-align: center;
+  width: 65em;
+  margin: auto;
 }
 
 h1 {
-	font-size:1.25em;
-	display:inline-block;
+  font-size: 1.25em;
+  display: inline-block;
 }
 
 h2 {
-	font-size:1em;
+  font-size: 1em;
 }
 
 .hidden {
-	display:none;
+  display: none;
 }
 
 .video {
-	margin:0 0.3em 0 0.3em;
-	display:inline-block;
-	width:10em;
-	height:20em;
+  margin: 0 0.3em 0 0.3em;
+  display: inline-block;
+  width: 10em;
+  height: 20em;
 }
 
 .video h2 {
-	line-height:1.1em;
-	max-height:3.3em;
-	overflow:hidden;
-	margin-bottom:0;
+  line-height: 1.1em;
+  max-height: 3.3em;
+  overflow: hidden;
+  margin-bottom: 0;
 }
 
 .videoPic {
-	height:10em;
-	width:10em;
-	border: solid beige 0.25em;
-	z-index:10;
+  height: 10em;
+  width: 10em;
+  border: solid beige 0.25em;
+  z-index: 10;
 }
 .controlDiv {
-	margin:0.5em 0.5em 0 0.5em;
-	height:3em;
-	width:4.5em;
-	float:left;
+  margin: 0.5em 0.5em 0 0.5em;
+  height: 3em;
+  width: 4.5em;
+  float: left;
 }
 
 .controlButton {
-	height:3em;
-	width:4.5em;
-	border-radius:0.63em;
-	background-color: #99BADD;
-	color:white;
-	box-shadow:0.125em 0.125em 0.125em black;
-	display:inline-block;
-	text-decoration:none;
-	border:solid #99BADD 0.25em;
+  height: 3em;
+  width: 4.5em;
+  border-radius: 0.63em;
+  background-color: #99badd;
+  color: white;
+  box-shadow: 0.125em 0.125em 0.125em black;
+  display: inline-block;
+  text-decoration: none;
+  border: solid #99badd 0.25em;
 }
 
 .controlButton:active {
-	background-color: #4a6aa3;
-	box-shadow:none;
-	margin-left:0.13em;
+  background-color: #4a6aa3;
+  box-shadow: none;
+  margin-left: 0.13em;
 }
 
 .controlPic {
-	border-radius:100%;
-	margin:0.5em 0 0 0;
-	width:2em;
-	height:2em;
-	display:inline-block;
+  border-radius: 100%;
+  margin: 0.5em 0 0 0;
+  width: 2em;
+  height: 2em;
+  display: inline-block;
 }
 
 .navPic {
-	display:block;
-	border-radius:100%;
-	border: solid beige 0.25em;
-	margin-top:1.7em;
-	margin-right:0.5em;
-	margin-left:0.5em;
-	width:4em;
-	height:4em;
+  display: block;
+  border-radius: 100%;
+  border: solid beige 0.25em;
+  margin-top: 1.7em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  width: 4em;
+  height: 4em;
 }
 
 .controlSelected {
-	border:solid red 0.25em;
+  border: solid red 0.25em;
 }
 
 #close {
-	float:right;
-	height:1.5em;
-	width:1.5em;
-	margin:0.5em 0.5em auto auto;
+  float: right;
+  height: 1.5em;
+  width: 1.5em;
+  margin: 0.5em 0.5em auto auto;
 }
 
 #close:hover {
-	opacity:0.5;
-	cursor:pointer;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 #controls {
-	display:none;
-	width:65em;
-	height:3em;
-	margin-right:2em;
-	margin-top:-2.05em;
+  display: none;
+  width: 65em;
+  height: 3em;
+  margin-right: 2em;
+  margin-top: -2.05em;
 }
 
 #header {
-	color: #99BADD;
-	background-color:black;
-	box-shadow:0.125em 0.125em 0.125em #99BADD;
-	font-size:1.88em;
-	display:inline-block;
-	padding:0.31em 0.63em 0.31em 0.63em;
-	margin-bottom:0;
-	margin-left:2em;
+  color: #99badd;
+  background-color: black;
+  box-shadow: 0.125em 0.125em 0.125em #99badd;
+  font-size: 1.88em;
+  display: inline-block;
+  padding: 0.31em 0.63em 0.31em 0.63em;
+  margin-bottom: 0;
+  margin-left: 2em;
 }
 
 #help {
-	float:right;
-	margin-right:4em;
+  float: right;
+  margin-right: 4em;
 }
 
 #huge {
-	float:left;
-	display:inline-block;
-	margin-top:-2.18em;
-	width:44.41em;
-	height:25em;
-	margin-left:10.3em;
+  float: left;
+  display: inline-block;
+  margin-top: -2.18em;
+  width: 44.41em;
+  height: 25em;
+  margin-left: 10.3em;
 }
 
 #nextPage {
-	display:inline-block;
-	height:8.44em;
+  display: inline-block;
+  height: 8.44em;
 }
 
 #lastPage {
-	display:inline-block;
-	height:8.44em;
+  display: inline-block;
+  height: 8.44em;
 }
 
-#preview, #settingsContainer {
-	font-size:3em;
-	position:absolute;
-	border:solid 0.0625em black;
-	box-shadow:0.125em 0.125em 0.125em black;
-	width:21em;
-	height:12em;
-	/*background-color:beige;*/
-	background: rgba(245, 245, 220, 0.95);
-	display:none;
-	margin-left:0.1666em;
-	margin-top:-3em;
-	z-index:2;
-
+#preview,
+#settingsContainer {
+  font-size: 3em;
+  position: absolute;
+  border: solid 0.0625em black;
+  box-shadow: 0.125em 0.125em 0.125em black;
+  width: 21em;
+  height: 12em;
+  /*background-color:beige;*/
+  background: rgba(245, 245, 220, 0.95);
+  display: none;
+  margin-left: 0.1666em;
+  margin-top: -3em;
+  z-index: 2;
 }
 
 #preview h2 {
-	line-height:1.1em;
-	max-height:2.2em;
-	overflow:hidden;
-	line-height:1.1em;
+  line-height: 1.1em;
+  max-height: 2.2em;
+  overflow: hidden;
+  line-height: 1.1em;
 }
 
 #preview img {
-	height:8.5em;
-	width:12em;
-	margin-top:-0.7em;
-	opacity:1.0;
+  height: 8.5em;
+  width: 12em;
+  margin-top: -0.7em;
+  opacity: 1;
 }
 
 #query {
-	display:inline-block;
-	margin-top:0.2em;
-	margin-bottom:0.1em;
-	outline:0;
-	font-size:3em;
-	width:7em;
-	border-radius:1em;
-	border:solid 0.0625em gray;
-	padding:0.2em 0.3em 0.2em 0.3em;;
-	text-align:right;
+  display: inline-block;
+  margin-top: 0.2em;
+  margin-bottom: 0.1em;
+  outline: 0;
+  font-size: 3em;
+  width: 7em;
+  border-radius: 1em;
+  border: solid 0.0625em gray;
+  padding: 0.2em 0.3em 0.2em 0.3em;
+  text-align: right;
 }
 
 #searchButton {
-	font-size:2.4em;
-	padding:0.2em 0.3em 0.2em 0.3em;
-	border-radius:1em;
-	border:solid 0.0625em gray;
-	outline:0;
-	background-color: #99BADD;
+  font-size: 2.4em;
+  padding: 0.2em 0.3em 0.2em 0.3em;
+  border-radius: 1em;
+  border: solid 0.0625em gray;
+  outline: 0;
+  background-color: #99badd;
 }
 
 #searchButton:hover {
-	outline:0;
-	background-color: #57b9ed;
+  outline: 0;
+  background-color: #57b9ed;
 }
 
 #searchButton:active {
-	outline:0;
-	background-color: #99BADD;
+  outline: 0;
+  background-color: #99badd;
 }
 
 #settings {
-	float:right;
-	cursor:pointer;
+  float: right;
+  cursor: pointer;
 }
 
 #settingsContainer h3 {
-	margin:0.3 auto 0.3em auto;
+  margin: 0.3 auto 0.3em auto;
 }
 
 #settingsContainer p {
-	font-size:0.6em;
-	display:inline-block;
-	margin:0 auto;
-	vertical-align:middle;
+  font-size: 0.6em;
+  display: inline-block;
+  margin: 0 auto;
+  vertical-align: middle;
 }
 
 #settingsContainer input {
-	width:1em;
-	height:1em;
-	font-size:0.6em;
-	display:inline-block;
-	vertical-align:middle;
+  width: 1em;
+  height: 1em;
+  font-size: 0.6em;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #settingsHeader {
-	margin-bottom:0.3em;
-	margin-left:1.6em;
+  margin-bottom: 0.3em;
+  margin-left: 1.6em;
 }
 
 #tooltip {
-	float:left;
-	background-color:beige;
-	box-shadow:0.125em 0.125em 0.125em black;
-	border: solid 0.125em black;
-	font-weight:bold;
-	color:black;
-	font-size:1em;
-	height:2.5em;
-	width:19em;
-	border-radius:0.4725em;
-	padding:0 0 1em 0;
-	margin-top:0.325em;
-	margin-left:11.5em;
-	margin-right:1em;
+  float: left;
+  background-color: beige;
+  box-shadow: 0.125em 0.125em 0.125em black;
+  border: solid 0.125em black;
+  font-weight: bold;
+  color: black;
+  font-size: 1em;
+  height: 2.5em;
+  width: 19em;
+  border-radius: 0.4725em;
+  padding: 0 0 1em 0;
+  margin-top: 0.325em;
+  margin-left: 11.5em;
+  margin-right: 1em;
 }
 
 #tooltip p {
-	display:block;
-	font-size:1.5em;
-	margin-top:0.7em;
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.7em;
 }
 
 #videoCenter {
-	width:65em;
+  width: 65em;
 }
 
 #videos {
-	margin-top:1.25em;
+  margin-top: 1.25em;
 }
 
-#well, #help, #settings {
-	margin-right:0;
-	margin-top:0.5em;
-	width:4em;
-	height:4em;
+#well,
+#help,
+#settings {
+  margin-right: 0;
+  margin-top: 0.5em;
+  width: 4em;
+  height: 4em;
 }
 
 #well {
-	float:left;
+  float: left;
 }
 
-#well:hover, #help:hover, #settings:hover {
-	opacity:0.5;
+#well:hover,
+#help:hover,
+#settings:hover {
+  opacity: 0.5;
 }
 
 .selected {
-	border: solid red 0.25em;
-	opacity:0.5;
+  border: solid red 0.25em;
+  opacity: 0.5;
 }
 
 .selected:active {
-	border:solid #56A0D3 0.25em;
+  border: solid #56a0d3 0.25em;
 }
 
 .underlined {
-	text-decoration:underline;
+  text-decoration: underline;
 }
 
 .bold {
-	font-weight:bold;
+  font-weight: bold;
 }
+

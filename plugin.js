@@ -1,7 +1,7 @@
 var locations = {
   DISPLAY: "display",
   VIDEO: "video",
-  SEARCH: "search"
+  SEARCH: "search",
 };
 
 var keys = {
@@ -10,7 +10,7 @@ var keys = {
   LEFT: 37,
   UP: 38,
   RIGHT: 39,
-  DOWN: 40
+  DOWN: 40,
 };
 
 var keyIndex = 1;
@@ -19,7 +19,7 @@ var buttonSettings = {
   playPause: true,
   rewind: true,
   related: true,
-  next: true
+  next: true,
 };
 
 var last;
@@ -37,7 +37,7 @@ var myLocation = locations.SEARCH;
 
 var scanInterval = 0;
 
-window.onhashchange = function() {
+window.onhashchange = function () {
   if (isBrowserNavigation) {
     load();
   } else {
@@ -77,7 +77,7 @@ function buildHash() {
 }
 
 function activateSettings() {
-  $("#settings").click(function() {
+  $("#settings").click(function () {
     $("#settingsContainer").slideToggle();
   });
 
@@ -88,7 +88,7 @@ function activateSettings() {
 
   $("#settingsContainer")
     .find('input[type="checkbox"]')
-    .click(function() {
+    .click(function () {
       // Handle text to speech toggle
       if (this.id == "textToSpeechSetting") {
         textToSpeechEnabled = !textToSpeechEnabled;
@@ -103,7 +103,7 @@ function activateSettings() {
 
       showButtonsFromSettings();
     });
-  $("#scanInterval").change(function() {
+  $("#scanInterval").change(function () {
     scanInterval = parseInt(this.value);
   });
 }
@@ -215,7 +215,7 @@ function load() {
   }
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
   // Make control buttons fade out; hide rest of video controls
   for (var button = 0; button < 4; button++)
     $("#control" + button).fadeTo(0, 0);
@@ -228,21 +228,21 @@ $(document).ready(function() {
   // on page load, focus is set to video search box
   $("#query").focus();
 
-  $("#query").click(function() {
+  $("#query").click(function () {
     isUserSearching = true;
   });
 
-  $("#query").select(function() {
+  $("#query").select(function () {
     isUserSearching = true;
   });
 
-  $("#query").focusout(function() {
+  $("#query").focusout(function () {
     isUserSearching = false;
   });
 
   // hack for 1 switch test
   var scanTime = 0;
-  setInterval(function() {
+  setInterval(function () {
     if (scanInterval > 0) {
       scanTime = (scanTime + 1) % scanInterval;
       if (scanTime == 0) {
@@ -254,7 +254,7 @@ $(document).ready(function() {
   }, 1000);
 
   // a key is pressed
-  $("body").keydown(function(event) {
+  $("body").keydown(function (event) {
     var key = event.keyCode;
 
     if (isUserSearching) {
@@ -442,7 +442,7 @@ function increment() {
 
 function showPreview() {
   if (!isUserSearching) {
-    $("#preview").fadeOut("fast", function() {
+    $("#preview").fadeOut("fast", function () {
       $("#preview").fadeIn("fast");
 
       var title = videoTitles[keyIndex - 1];
@@ -465,7 +465,7 @@ function showPreview() {
       clearTimeout(previewTimeout);
 
       // hide preview after 8 seconds
-      previewTimeout = setTimeout(function() {
+      previewTimeout = setTimeout(function () {
         hidePreview();
       }, 8000);
     });
@@ -575,7 +575,7 @@ function speakText(text) {
 
   stopSpeaking();
 
-  setTimeout(function() {
+  setTimeout(function () {
     var msg = new SpeechSynthesisUtterance(text);
     window.speechSynthesis.speak(msg);
   }, 100);
