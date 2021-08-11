@@ -162,7 +162,7 @@ function checkForVideos() {
           nextPageTokens[relatedVideoIDs.length] +
           "&playlistId=" +
           playlistID +
-          "&videoEmbeddable=true" +
+          "&safeSearch=strict&videoEmbeddable=true" +
           "&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
         {
           type: "GET",
@@ -190,7 +190,7 @@ function checkForVideos() {
           nextPageTokens[relatedVideoIDs.length] +
           "&relatedToVideoId=" +
           relatedVideoIDs[relatedVideoIDs.length - 1] +
-          "&videoEmbeddable=true" +
+          "&safeSearch=strict&videoEmbeddable=true" +
           "&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
         {
           type: "GET",
@@ -217,7 +217,7 @@ function checkForVideos() {
         nextPageTokens[relatedVideoIDs.length] +
         "&q=" +
         q +
-        "&videoEmbeddable=true" +
+        "&safeSearch=strict&videoEmbeddable=true" +
         "&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
       {
         type: "GET",
@@ -495,7 +495,7 @@ function search() {
     return $.ajax(
       "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" +
         q +
-        "&type=video&videoEmbeddable=true&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
+        "&type=video&safeSearch=strict&videoEmbeddable=true&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
       {
         type: "GET",
         cache: false,
@@ -529,7 +529,7 @@ function searchRelatedVideos() {
     "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video" +
       "&relatedToVideoId=" +
       relatedVideoIDs[relatedVideoIDs.length - 1] +
-      "&videoEmbeddable=true&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
+      "&safeSearch=strict&videoEmbeddable=true&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
     {
       type: "GET",
       cache: false,
@@ -553,7 +553,7 @@ function searchPlaylist() {
     "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet" +
       "&playlistId=" +
       playlistID +
-      "&videoEmbeddable=true&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
+      "&safeSearch=strict&videoEmbeddable=true&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
     {
       type: "GET",
       cache: false,
@@ -591,7 +591,7 @@ function searchCurrPage(isLoadEvent) {
           currPageTokens[relatedVideoIDs.length] +
           "&part=snippet&relatedToVideoId=" +
           relatedVideoIDs[relatedVideoIDs.length - 1] +
-          "&videoEmbeddable=true" +
+          "&safeSearch=strict&videoEmbeddable=true" +
           "&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
         {
           type: "GET",
@@ -611,7 +611,7 @@ function searchCurrPage(isLoadEvent) {
         "https://www.googleapis.com/youtube/v3/search?part=snippet" +
           "&relatedToVideoId=" +
           relatedVideoIDs[relatedVideoIDs.length - 1] +
-          "&videoEmbeddable=true&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
+          "&safeSearch=strict&videoEmbeddable=true&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
         {
           type: "GET",
           cache: false,
@@ -636,7 +636,7 @@ function searchCurrPage(isLoadEvent) {
           currPageTokens[relatedVideoIDs.length] +
           "&part=snippet&q=" +
           q +
-          "&videoEmbeddable=true&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
+          "&safeSearch=strict&videoEmbeddable=true&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
         {
           type: "GET",
           cache: false,
@@ -654,7 +654,7 @@ function searchCurrPage(isLoadEvent) {
       return $.ajax(
         "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" +
           q +
-          "&videoEmbeddable=true&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
+          "&safeSearch=strict&videoEmbeddable=true&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
         {
           type: "GET",
           cache: false,
@@ -689,7 +689,7 @@ function searchCurrPagePlaylist(isLoadEvent) {
         currPageTokens[relatedVideoIDs.length] +
         "&playlistId=" +
         playlistID +
-        "&videoEmbeddable=true" +
+        "&safeSearch=strict&videoEmbeddable=true" +
         "&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
       {
         type: "GET",
@@ -705,7 +705,7 @@ function searchCurrPagePlaylist(isLoadEvent) {
   } else {
     return $.ajax(
       "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet" +
-        "&videoEmbeddable=true" +
+        "&safeSearch=strict&videoEmbeddable=true" +
         "&playlistId=" +
         playlistID +
         "&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
@@ -738,7 +738,7 @@ function searchNextPage(noDisplay) {
         nextPageTokens[relatedVideoIDs.length] +
         "&part=snippet&relatedToVideoId=" +
         relatedVideoIDs[relatedVideoIDs.length - 1] +
-        "&videoEmbeddable=true" +
+        "&safeSearch=strict&videoEmbeddable=true" +
         "&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
       {
         type: "GET",
@@ -763,7 +763,7 @@ function searchNextPage(noDisplay) {
         nextPageTokens[relatedVideoIDs.length] +
         "&part=snippet&q=" +
         q +
-        "&videoEmbeddable=true" +
+        "&safeSearch=strict&videoEmbeddable=true" +
         "&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
       {
         type: "GET",
@@ -791,7 +791,7 @@ function searchNextPagePlaylist(noDisplay) {
       nextPageTokens[relatedVideoIDs.length] +
       "&playlistId=" +
       playlistID +
-      "&videoEmbeddable=true" +
+      "&safeSearch=strict&videoEmbeddable=true" +
       "&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
     {
       type: "GET",
@@ -824,7 +824,7 @@ function searchPrevPage() {
         prevPageTokens[relatedVideoIDs.length] +
         "&part=snippet&relatedToVideoId=" +
         relatedVideoIDs[relatedVideoIDs.length - 1] +
-        "&videoEmbeddable=true" +
+        "&safeSearch=strict&videoEmbeddable=true" +
         "&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
       {
         type: "GET",
@@ -848,7 +848,7 @@ function searchPrevPage() {
         prevPageTokens[relatedVideoIDs.length] +
         "&part=snippet&q=" +
         q +
-        "&videoEmbeddable=true" +
+        "&safeSearch=strict&videoEmbeddable=true" +
         "&type=video&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
       {
         type: "GET",
@@ -876,7 +876,7 @@ function searchPrevPagePlaylist() {
       prevPageTokens[relatedVideoIDs.length] +
       "&playlistId=" +
       playlistID +
-      "&videoEmbeddable=true" +
+      "&safeSearch=strict&videoEmbeddable=true" +
       "&key=AIzaSyCE9SP37v8UFetdrODAB_SZQfYe6beNfFc",
     {
       type: "GET",
